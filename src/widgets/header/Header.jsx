@@ -1,0 +1,4 @@
+import {useState} from 'react';
+import s from './Header.module.css';
+export const links=[['Produto','produto'],['Benefícios','beneficios'],['Como funciona','como-funciona'],['Avaliações','avaliacoes'],['FAQ','faq']];
+export default function Header(){const[open,setOpen]=useState(false);return <header className={s.header}><a href="#inicio" className={s.logo} aria-label="CHAP — início">CHAP<sup>™</sup></a><button className={s.toggle} aria-expanded={open} aria-controls="main-navigation" onClick={()=>setOpen(!open)}>{open?'Fechar ×':'Menu ☰'}</button><nav id="main-navigation" className={`${s.nav} ${open?s.open:''}`} aria-label="Navegação principal">{links.map(([label,id])=><a key={id} href={`#${id}`} onClick={()=>setOpen(false)}>{label}</a>)}<a className={s.buy} href="#comprar" onClick={()=>setOpen(false)}>Comprar agora <span>↗</span></a></nav></header>}

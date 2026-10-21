@@ -1,0 +1,8 @@
+import {useEffect,useRef,useState} from 'react';
+import {formatCurrency} from '../../../shared/lib/formatCurrency';
+import s from './PurchaseModal.module.css';
+export default function PurchaseModal({product,offer,price,onClose}){
+ const dialog=useRef(null);const [success,setSuccess]=useState(false);
+ useEffect(()=>{const element=dialog.current;const trigger=document.activeElement;const previous=document.body.style.overflow;document.body.style.overflow='hidden';element.showModal();return()=>{element.close();document.body.style.overflow=previous;trigger?.focus()};},[]);
+ return <dialog ref={dialog} className={s.dialog} aria-modal="true" aria-labelledby="order-title" onCancel={e=>{e.preventDefault();onClose()}} onClick={e=>{if(e.target===e.currentTarget){const r=e.currentTarget.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)onClose()}}}><button className={s.close} onClick={onClose} aria-label="Fechar pedido">×</button><span className={s.label}>SIMULAÇÃO ACADÊMICA</span><h2 id="order-title">{success?'TUDO CERTO.':'SUA ESCOLHA. SUA ATITUDE.'}</h2>{success?<><p role="status">Pedido demonstrativo registrado nesta tela. Nenhuma compra foi realizada.</p><button className={s.primary} onClick={onClose}>Continuar explorando ↗</button></>:<><p>{offer==='kit'?'Kit com 3 versões — Original, Urban e Energy':product.name}</p><strong>{formatCurrency(price)}</strong><p className={s.note}>Valor ilustrativo. Não há venda real, cobrança ou envio. Nenhum dado pessoal é solicitado ou armazenado.</p><button className={s.primary} onClick={()=>setSuccess(true)}>Confirmar pedido fictício ↗</button></>}</dialog>
+}

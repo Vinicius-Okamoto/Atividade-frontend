@@ -1,0 +1,2 @@
+import s from './ProductTube.module.css';
+export default function ProductTube({color='#202222',name='CHAP Original',className=''}){return <div className={`${s.tube} ${className}`} style={{'--tube-color':color}} role="img" aria-label={`Representação ilustrativa do protetor labial ${name}`}><div className={s.cap}/><div className={s.body}><span className={s.wordmark}>CHAP</span><span className={s.caption}>LIP BALM<br/>DAILY ESSENTIAL</span></div><div className={s.base}/></div>}
