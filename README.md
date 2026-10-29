@@ -79,3 +79,7 @@ O código está preparado para repositório público. [Integrantes: criar/public
 
 ## Aviso
 Este site é uma demonstração acadêmica. Produto, benefícios, preços, avaliações e pedidos são fictícios. Não há compra, pagamento ou envio. FPS 30 é apenas um atributo conceitual não validado; não aparece como promessa nas embalagens CSS.
+
+
+## Playwright MCP (OpenCode e VS Code)
+O projeto acompanha configuracao pronta do Playwright MCP: `opencode.json` (OpenCode) e `.vscode/mcp.json` (VS Code). Para usar no Windows, consulte **`COMO_USAR_MCP.md`**. Execute o site normalmente com `npm.cmd run dev`; os testes via MCP exigem iniciar um assistente de IA compativel separadamente.
